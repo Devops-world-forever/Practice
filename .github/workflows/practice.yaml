@@ -1,0 +1,26 @@
+name: practice_workflow
+
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  testjob:
+    name: testingjob
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      
+  
+
